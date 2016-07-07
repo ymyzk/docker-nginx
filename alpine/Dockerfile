@@ -40,8 +40,6 @@ ENV CONFIG "\
 	--with-stream \
 	--with-stream_ssl_module \
 	--with-http_slice_module \
-	--with-mail \
-	--with-mail_ssl_module \
 	--with-file-aio \
 	--with-http_v2_module \
 	--with-ipv6 \
