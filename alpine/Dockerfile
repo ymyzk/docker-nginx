@@ -34,7 +34,6 @@ ENV CONFIG "\
 	--with-http_secure_link_module \
 	--with-http_stub_status_module \
 	--with-http_auth_request_module \
-	--with-http_xslt_module=dynamic \
 	--with-http_image_filter_module=dynamic \
 	--with-http_geoip_module=dynamic \
 	--with-threads \
@@ -61,7 +60,6 @@ RUN \
 		linux-headers \
 		curl \
 		gnupg \
-		libxslt-dev \
 		gd-dev \
 		geoip-dev \
 	&& curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tar.gz \
@@ -77,7 +75,6 @@ RUN \
 	&& ./configure $CONFIG --with-debug \
 	&& make \
 	&& mv objs/nginx objs/nginx-debug \
-	&& mv objs/ngx_http_xslt_filter_module.so objs/ngx_http_xslt_filter_module-debug.so \
 	&& mv objs/ngx_http_image_filter_module.so objs/ngx_http_image_filter_module-debug.so \
 	&& mv objs/ngx_http_geoip_module.so objs/ngx_http_geoip_module-debug.so \
 	&& ./configure $CONFIG \
@@ -89,7 +86,6 @@ RUN \
 	&& install -m644 html/index.html /usr/share/nginx/html/ \
 	&& install -m644 html/50x.html /usr/share/nginx/html/ \
 	&& install -m755 objs/nginx-debug /usr/sbin/nginx-debug \
-	&& install -m755 objs/ngx_http_xslt_filter_module-debug.so /usr/lib/nginx/modules/ngx_http_xslt_filter_module-debug.so \
 	&& install -m755 objs/ngx_http_image_filter_module-debug.so /usr/lib/nginx/modules/ngx_http_image_filter_module-debug.so \
 	&& install -m755 objs/ngx_http_geoip_module-debug.so /usr/lib/nginx/modules/ngx_http_geoip_module-debug.so \
 	&& ln -s ../../usr/lib/nginx/modules /etc/nginx/modules \
