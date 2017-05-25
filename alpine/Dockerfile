@@ -1,7 +1,5 @@
 FROM alpine:3.6
 
-MAINTAINER Yusuke Miyazaki <miyazaki.dev@gmail.com>
-
 ENV NGINX_VERSION 1.13.0
 ENV NGINX_HEADERS_MORE_VERSION 0.32
 
