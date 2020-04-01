@@ -24,6 +24,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
         --with-http_stub_status_module \
+        --with-http_auth_request_module \
         --with-http_image_filter_module=dynamic \
         --with-http_geoip_module=dynamic \
         --with-threads \
