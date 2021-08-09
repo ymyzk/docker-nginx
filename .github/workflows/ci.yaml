@@ -39,3 +39,12 @@ jobs:
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:alpine
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:alpine
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
